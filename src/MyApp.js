@@ -10,17 +10,21 @@ import { connect } from 'react-redux';
     return (
       <View style={styles.container}>
         <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
-          <TouchableOpacity>
-            <Text>Increase</Text>
+          <TouchableOpacity
+          onPress = { () => this.props.incCounter() }
+          >
+            <Text style={{fontSize: 30}}>Increase</Text>
           </TouchableOpacity>
-          <TouchableOpacity>
-            <Text>Decrease</Text>
+          <Text>{this.props.myCounter}</Text>
+          <TouchableOpacity
+          onPress = { () => this.props.decCounter() }
+          >
+            <Text style={{fontSize: 30}}>Decrease</Text>
           </TouchableOpacity>
         </View>
       </View>
     );
-  }
-  
+  }  
 }
 
 function mapStateToProps(state) {
@@ -28,6 +32,8 @@ function mapStateToProps(state) {
     myCounter: state.myCounter
   };
 }
+
+//dispatches actions
 function mapDispatchToProp(dispatch) {
   return {
     incCounter: () => dispatch({

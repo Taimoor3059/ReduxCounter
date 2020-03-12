@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import MyApp from './src/MyApp';
-import reducer from './modules/reducer'; 
+
 
 const initState = {
   myCounter: 0
@@ -11,8 +11,7 @@ const initState = {
 
 const store = createStore(reducer);
 
-const reducer = (state = initState, action) => {
-  
+function reducer (state = initState, action) {
   switch (action.type) {
     case 'INC_COUNTER':
       return { myCounter: state.myCounter + 1 };
@@ -39,11 +38,3 @@ export default class App extends React.Component {
   
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
